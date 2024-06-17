@@ -25,10 +25,13 @@ export const StateContext = createContext<StateContextType>({
 });
 
 export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
-    const [user, setUser] = useState<object | null>(null);
-    const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+    // const [user, setUser] = useState<object | null>(null);
+    // const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
     // const [token, _setToken] = useState<string | null>(localStorage.getItem("ACCESS_TOKEN"));
-    //  const [token, _setToken] = useState<string | null>("123");
+     const [user, setUser] = useState<object | null>({
+         name: "Angella",
+     });
+     const [token, _setToken] = useState<string | null>(null);
 
     const setToken = (token: string | null) => {
         _setToken(token);
