@@ -3,7 +3,7 @@
 //Based on whether the  token is available or not, the default layout will be rendered or the guest layout will be rendered with corresponding pages
 
 
-import { createContext, useState, ReactNode, useContext } from "react";
+import { createContext, useState, ReactNode } from "react";
 
 interface StateContextType {
     user: object | null;
@@ -17,7 +17,7 @@ interface ContextProviderProps {
 }
 
 
-const stateContext = createContext<StateContextType>({
+export const StateContext = createContext<StateContextType>({
     user: null,
     token: null,
     setUser: () => {},
@@ -27,6 +27,8 @@ const stateContext = createContext<StateContextType>({
 export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
     const [user, setUser] = useState<object | null>(null);
     const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+    // const [token, _setToken] = useState<string | null>(localStorage.getItem("ACCESS_TOKEN"));
+    //  const [token, _setToken] = useState<string | null>("123");
 
     const setToken = (token: string | null) => {
         _setToken(token);
@@ -38,13 +40,13 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) =>
     };
 
     return (
-        <stateContext.Provider value={{ user, setUser, token, setToken }}>
+        <StateContext.Provider value={{ user, setUser, token, setToken }}>
             {children}
-        </stateContext.Provider>
+        </StateContext.Provider>
     );
 };
 
-export const useStateContext = ()=> useContext(stateContext)
+
 
 
 

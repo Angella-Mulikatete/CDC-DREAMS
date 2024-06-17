@@ -5,6 +5,7 @@ import Notfound from "./pages/Notfound";
 import Defaultlayout from "./components/Defaultlayout";
 import Guestlayout from "./components/Guestlayout";
 import Users from "./pages/Users";
+import Dashboard from "./pages/Dashboard";
 
 
 const routes = [
@@ -14,11 +15,15 @@ const routes = [
         children: [
             {
                 path: "/",
-                element: <Navigate to="./users"/>,
+                element: <Navigate to="./users" />,
             },
             {
                 path: "/users",
                 element: <Users />,
+            },
+            {
+                path: "/dashboard",
+                element: <Dashboard />,
             },
         ],
     },
